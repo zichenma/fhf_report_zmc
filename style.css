@@ -1,0 +1,18 @@
+/*html{
+    display:flex;
+    justify-content:center;
+}*/
+
+table { margin: 1em; text-align: center; }
+th, td { padding: .4em; border: 1px #ccc solid; text-align: center }
+tr:nth-child(even) {background: #def;}
+tr:nth-child(odd) {background: #fff;}
+
+#download{
+	margin-bottom: 1em;
+}
+.capitalize {
+   text-transform: capitalize;
+}
+
+

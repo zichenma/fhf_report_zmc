@@ -1,0 +1,95 @@
+<!doctype html>
+<html ng-app='myReport'>
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" ng-controller="mainController">
+            <h1 style="color:#428bca">{{selectedItem}}</h1>
+            <h2 style="color:#d9534f" ng-show = "hasError.status">{{hasError.message}}</h2>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                    {{selectedItem}}
+                    <span class="caret"></span>
+                </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation" ng-repeat="(key, value) in apis">
+                            <a role="menuitem" tabindex="-1" ng-click="itemSelected(key)" >{{key}}</a> 
+                        </li>
+                    </ul>
+            </div>
+        <hr>   
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" 
+                    placeholder="Search for..." ng-model="searchText">
+                </div>
+            </div> 
+         <button id="download" class="btn btn-success pull-right" export-to-csv>Download</button>
+         <table class="table table-striped table-bordered table-hover table-responsive" cellspacing="0"
+         width="100%" ng-hide ="hasError.status" >
+    
+                <thead>
+                    <tr>
+                        <th ng-repeat="(key, value) in data.items[0]" class="capitalize"> {{key}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr dir-paginate ="data in data.items| itemsPerPage:pageSize |filter: searchText">
+                        <td ng-repeat="(key, value) in data ">{{value}}</td>          
+                </tr>
+                <!--this is for spcific table colunm-->
+                <!--<tr ng-repeat="item in data.items | filter: searchText">
+                        <td>{{item.period}}</td> 
+                        <td>{{item.total}}</td> 
+                        <td>{{item['eloisa moreira']}}</td> 
+                        <td>{{item['william morales']}}</td> 
+                        <td>{{item['lenilda carvalho']}}</td> 
+                        <td>{{item['anamaris gonzalez']}}</td>   
+                        <td>{{item['juliana ambroise']}}</td>   
+                        <td>{{item['ana luiza theriault']}}</td> 
+                        <td>{{item['teresa daveiga']}}</td>         
+                </tr>-->
+                </tbody>
+            </table>
+            <tfoot class="form-inline">
+                <form class="form-inline">
+                    <div class="pull-right form-group form-inline" style ="margin-top: -20px;">
+                        <dir-pagination-controls
+                            max-size = "10"
+                            direction-links = "true"
+                            boundary-links = "true">
+                        </dir-pagination-controls>
+                    </div>
+                    <h4><label for="itemPerPage" class="pull-left label label-primary control-label">items/page:</label></h4>
+                    <div class="col-xs-1 pull-left form-group">
+                        <input type="number" 
+                        class="input-mini"  
+                        min="1" max="100" 
+                        class="form-control" 
+                        name="itemPerPage" 
+                        ng-model="pageSize"
+                        style="width: 50px; border-radius: 0.25em;">
+                    </div>
+                </form> 
+            </tfoot>  
+        </div>
+    </div>
+<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script  type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="javascript/dirPagination.js"></script>
+<script type="text/javascript" src= "javascript/api.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="javascript/directive/exportCSV.js"></script>
+</body>
+</html>
+
+
