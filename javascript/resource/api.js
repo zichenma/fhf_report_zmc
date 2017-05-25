@@ -34,7 +34,7 @@ var apis = {
     "Misssing Titles Reports": 
     "http://apis.firsthelpfinancial.com/ords/collectionreports/missing_titles_report/",
 
-    "Missing Titles Age Thres hold": 
+    "Missing Titles Age Threshold": 
     "http://apis.firsthelpfinancial.com/ords/collectionreports/missing_titles_age_threshold/",
     
     "Open Complaints": 
