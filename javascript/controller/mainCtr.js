@@ -1,5 +1,4 @@
 myApp.controller('mainController', function ($scope, $http) {
-	$scope.message = "Hello_World";
 	$scope.apis = apis;
 	$scope.selectedItem = "Current Active Repo Assignments";
 	$scope.hasError= { 
@@ -17,15 +16,31 @@ myApp.controller('mainController', function ($scope, $http) {
 				 apis[$scope.selectedItem]
 			).success(function (data) {
                     $scope.data = data;
-				     //console.log(data.items[0]);
+				    //console.log(data.items[0]);
 				})
              .error(function (error) {
 					$scope.hasError.status = true;
 					//console.log("something wrong " + $scope.hasError.status);
 			});
 			$scope.hasError.status = false;
-			// console.log(apis[$scope.selectedItem]);
+			//console.log(apis[$scope.selectedItem]);
     };
 	 $scope.getApi();
 	 $scope.pageSize = 15;
+	 $scope.sortColumn= "";
+	 $scope.reverseSort = false;
+
+	 $scope.sortData = function (column) {
+		 $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
+		  $scope.sortColumn = column;
+		 console.log($scope.sortColumn);
+	 }
+
+	 $scope.getSortClass = function (column) {
+		 if ($scope.sortColumn == column) {
+			 return $scope.reverseSort ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'
+			
+		 }
+		 return '';
+	 }
 });

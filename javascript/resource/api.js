@@ -43,6 +43,9 @@ var apis = {
     "Repo Vendor Status": 
     "http://apis.firsthelpfinancial.com/ords/collectionreports/repo_vendor_status/",
 
+    "Repo Vendor Assgnment Fees": 
+    "http://apis.firsthelpfinancial.com/ords/collectionreports/repo_vendor_assgnmnt_fees/",
+
     // "Repo Status Summary": 
     // "http://apis.firsthelpfinancial.com/ords/collectionreports/currnt_repo_status_summry/",
     
