@@ -27,6 +27,7 @@ myApp.controller('mainController', function ($scope, $http) {
     };
 	 $scope.getApi();
 	 $scope.pageSize = 15;
+<<<<<<< HEAD
 	 $scope.sortColumn= "";
 	 $scope.reverseSort = false;
 
@@ -44,3 +45,6 @@ myApp.controller('mainController', function ($scope, $http) {
 		 return '';
 	 }
 });
+=======
+});
+>>>>>>> b3ecee6be7e2ed85d4cc1e80719e72e9fc42caea
