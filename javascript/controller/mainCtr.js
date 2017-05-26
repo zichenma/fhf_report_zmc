@@ -1,5 +1,4 @@
 myApp.controller('mainController', function ($scope, $http) {
-	$scope.message = "Hello_World";
 	$scope.apis = apis;
 	$scope.selectedItem = "Current Active Repo Assignments";
 	$scope.hasError= { 
