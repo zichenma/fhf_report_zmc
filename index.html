@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container" ng-controller="mainController">
-            <!--<h1>{{message | noUnderscore}}</h1>-->
+            <h1>{{message | noUnderscore}}</h1>
             <h1 style="color:#428bca">{{selectedItem}}</h1>
             <h2 style="color:#d9534f" ng-show = "hasError.status">{{hasError.message}}</h2>
             <div class="dropdown">
@@ -20,7 +20,7 @@
                 </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li role="presentation" ng-repeat="(key, value) in apis">
-                            <a role="menuitem" tabindex="-1" ng-click="itemSelected(key)" >{{key}}</a> 
+                            <a role="menuitem" tabindex ="-1" ng-click="itemSelected(key)" >{{key}}</a> 
                         </li>
                     </ul>
             </div>
@@ -39,7 +39,7 @@
          width="100%" ng-hide ="hasError.status" >
                 <thead>
                     <tr>
-                        <th ng-repeat="(key, value) in data.items[0] |noUnderscore" class="capitalize"> {{key}}</th>
+                        <th ng-repeat="(key, value) in data.items[0]" class="capitalize"> {{key | noUnderscore}}</th>
                     </tr>
                 </thead>
                 <tbody>
