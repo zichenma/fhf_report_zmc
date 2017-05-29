@@ -29,7 +29,6 @@ th {
     /*background: #00cccc;*/
     background:#428bca;
     color: #fff;
-    text-transform: uppercase;
     font-size: 12px;
     text-transform: capitalize;
     cursor:pointer;
@@ -39,4 +38,13 @@ tr:nth-child(odd) {background: #fff;}
 
 #download{
 	margin-bottom: 1em;
+}
+
+#filterDisplay{
+    display:flex;  
+    justify-content:space-between; 
+    font-size: 20px;
+}
+.capitalize{
+    text-transform: capitalize;
 }

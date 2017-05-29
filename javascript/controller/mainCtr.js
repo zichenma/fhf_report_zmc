@@ -1,19 +1,32 @@
 myApp.controller('mainController', function ($scope, $http) {
 	$scope.apis = apis;
-	$scope.selectedItem = "Current Active Repo Assignments";
+	$scope.logics = logics;
+	$scope.selectedKeys = ["Current Active Repo Assignments", " ", " "];
+	$scope.defaultValue = " ";
 	$scope.hasError= { 
 					   status: false, 
 					   message: "Oops, sorry something wrong with your report!"
 					 }
 
-	$scope.itemSelected = function(item){
-		$scope.selectedItem = item;
+	$scope.reportTitleSelected = function (rpTitle) {
+		$scope.selectedKeys[0] = rpTitle;
 		$scope.getApi();
-		//console.log($scope.selectedItem);		
+		//console.log($scope.selectedKeys);		
 	}
+
+	$scope.columnSelected = function (col) {
+		$scope.selectedKeys[1] = col;
+		// console.log($scope.selectedKeys[1])
+	}
+
+	$scope.logicSelected = function (logic) {
+		$scope.selectedKeys[2] = logic;
+		console.log($scope.selectedKeys[2]);
+	}
+
 	$scope.getApi = function () {
         $http.get(
-				 apis[$scope.selectedItem]
+				 apis[$scope.selectedKeys[0]]
 			).success(function (data) {
                     $scope.data = data;
 				    //console.log(data.items[0]);
@@ -23,28 +36,27 @@ myApp.controller('mainController', function ($scope, $http) {
 					//console.log("something wrong " + $scope.hasError.status);
 			});
 			$scope.hasError.status = false;
-			//console.log(apis[$scope.selectedItem]);
+			//console.log(apis[$scope.selectedKeys]);
     };
 	 $scope.getApi();
 	 $scope.pageSize = 15;
-<<<<<<< HEAD
-	 $scope.sortColumn= "";
 	 $scope.reverseSort = false;
 
 	 $scope.sortData = function (column) {
-		 $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
-		  $scope.sortColumn = column;
-		 console.log($scope.sortColumn);
+		 $scope.reverseSort = ($scope.selectedKeys[1] == column) ? !$scope.reverseSort : false;
+		 $scope.selectedKeys[1] = column;
+		 console.log($scope.selectedKeys[1]);
 	 }
 
+	
+
 	 $scope.getSortClass = function (column) {
-		 if ($scope.sortColumn == column) {
+		 if ($scope.selectedKeys[1] == column) {
 			 return $scope.reverseSort ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-top'
 			
 		 }
 		 return '';
 	 }
 });
-=======
-});
->>>>>>> b3ecee6be7e2ed85d4cc1e80719e72e9fc42caea
+
+

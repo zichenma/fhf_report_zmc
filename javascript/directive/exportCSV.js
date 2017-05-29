@@ -5,7 +5,7 @@ myApp.directive('exportToCsv',function(){
     		var el = element[0];
 	        element.bind('click', function(e){
 	        	var table = e.target.nextElementSibling;
-				//console.log(table);
+				// console.log(table);
 	        	var csvString = '';
 	        	for(var i=0; i< table.rows.length;i++){
 	        		var rowData = table.rows[i].cells;

@@ -6,21 +6,13 @@ myApp.filter("noUnderscore", function() {
             return value;
         }  
     };
-})
-.filter('toArray', function () {
-  return function (obj, addKey) {
-    if (!angular.isObject(obj)) return obj;
-    if ( addKey === false ) {
-      return Object.keys(obj).map(function(key) {
-        return obj[key];
-      });
-    } else {
-      return Object.keys(obj).map(function (key) {
-        var value = obj[key];
-        return angular.isObject(value) ?
-          Object.defineProperty(value, '$key', { enumerable: false, value: key}) :
-          { $key: key, $value: value };
-      });
+});
+myApp.filter("roundedData", function(){
+    return function(value){
+       if (angular.isNumber(value)) {
+            return Math.round(value * 100) / 100;
+       } else {
+            return value;
+       }
     }
-  };
 });
